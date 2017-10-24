@@ -14,7 +14,14 @@ namespace learnCore
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            //BuildWebHost(args).Run();
+            var host = new WebHostBuilder()
+                .UseKestrel()                   // setting web-server Kestrel
+                .UseContentRoot(Directory.GetCurrentDirectory()) // настраиваем корневой каталог приложения
+                .UseIISIntegration()            // обеспечиваем интеграцию с IIS
+                .UseStartup<Startup>()          // Установливаем главной файл приложения
+                .Build();
+            host.Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
