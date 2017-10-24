@@ -1,0 +1,10 @@
+/home/syrym/learnCore/bin/Debug/netcoreapp2.0/learnCore.deps.json
+/home/syrym/learnCore/bin/Debug/netcoreapp2.0/learnCore.runtimeconfig.json
+/home/syrym/learnCore/bin/Debug/netcoreapp2.0/learnCore.runtimeconfig.dev.json
+/home/syrym/learnCore/bin/Debug/netcoreapp2.0/learnCore.dll
+/home/syrym/learnCore/bin/Debug/netcoreapp2.0/learnCore.pdb
+/home/syrym/learnCore/obj/Debug/netcoreapp2.0/learnCore.csproj.CoreCompileInputs.cache
+/home/syrym/learnCore/obj/Debug/netcoreapp2.0/learnCore.AssemblyInfoInputs.cache
+/home/syrym/learnCore/obj/Debug/netcoreapp2.0/learnCore.AssemblyInfo.cs
+/home/syrym/learnCore/obj/Debug/netcoreapp2.0/learnCore.dll
+/home/syrym/learnCore/obj/Debug/netcoreapp2.0/learnCore.pdb
