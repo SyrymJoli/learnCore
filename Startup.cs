@@ -13,11 +13,14 @@ namespace learnCore
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDirectoryBrowser();
         }
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UseDirectoryBrowser();
             app.UseStaticFiles();
+            
             app.Run(async (context) =>
             {
                 await context.Response.WriteAsync("Hello World");
