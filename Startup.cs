@@ -13,17 +13,22 @@ namespace learnCore
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            // если приложение в процессе разработки
             if (env.IsDevelopment())
             {
+                // то выводим информацию об ошибке, при наличии ошибки
                 app.UseDeveloperExceptionPage();
             }
 
+            // обработка запроса - получаем контекст запроса в виде объекта context
             app.Run(async (context) =>
             {
+                // отправка ответа в виде строки "Hello World!"
                 await context.Response.WriteAsync("Hello World!");
             });
         }

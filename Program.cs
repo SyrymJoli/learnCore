@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
 
 namespace learnCore
 {
@@ -14,19 +15,11 @@ namespace learnCore
     {
         public static void Main(string[] args)
         {
-            //BuildWebHost(args).Run();
-            var host = new WebHostBuilder()
-                .UseKestrel()                   // setting web-server Kestrel
-                .UseContentRoot(Directory.GetCurrentDirectory()) // настраиваем корневой каталог приложения
-                .UseIISIntegration()            // обеспечиваем интеграцию с IIS
-                .UseStartup<Startup>()          // Установливаем главной файл приложения
-                .Build();
-            host.Run();
+            BuildWebHost(args).Run();
         }
-
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
+                .UseStartup<Startup>()      // Установка класса Startup как стартового
                 .Build();
     }
 }
