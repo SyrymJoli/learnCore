@@ -18,16 +18,20 @@ namespace learnCore
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            //Выполнение app.Use
+            int x = 2;
             app.Use(async (context, next) =>
             {
-                await context.Response.WriteAsync("<p>Hello world!</p>");
-                await next.Invoke();
+                x = x * 2;      // 2 * 2 = 4
+                await next.Invoke();    // вызов app.Run
+                x = x * 2;      // 8 * 2 = 16
+                await context.Response.WriteAsync($"Result: {x}");
             });
-                    
+        
             app.Run(async (context) =>
             {
-                // await Task.Delay(10000); можно поставить задержку
-                await context.Response.WriteAsync("<p>Good bye, World...</p>");
+                x = x * 2;  //  4 * 2 = 8
+                await Task.FromResult(0);
             });
         }
     }
