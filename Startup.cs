@@ -18,23 +18,11 @@ namespace learnCore
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            // Метод MapWhen
-            app.MapWhen(context => {
-                return context.Request.Query.ContainsKey("id") && 
-                        context.Request.Query["id"] == "5";
-            }, HandleId);
-            
+            app.UseToken();
+ 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Good bye, World...");
-            });
-        }
-
-        private static void HandleId(IApplicationBuilder app)
-        {
-            app.Run(async context =>
-            {
-                await context.Response.WriteAsync("id is equal to 5");
+                await context.Response.WriteAsync("Hello World");
             });
         }
     }
