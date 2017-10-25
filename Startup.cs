@@ -18,31 +18,23 @@ namespace learnCore
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            // Вложенные методы Map
-            app.Map("/home", home =>
-            {
-                home.Map("/index", Index);
-                home.Map("/about", About);
-            });
-        
+            // Метод MapWhen
+            app.MapWhen(context => {
+                return context.Request.Query.ContainsKey("id") && 
+                        context.Request.Query["id"] == "5";
+            }, HandleId);
+            
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Page Not Found");
+                await context.Response.WriteAsync("Good bye, World...");
             });
         }
 
-        private static void Index(IApplicationBuilder app)
+        private static void HandleId(IApplicationBuilder app)
         {
             app.Run(async context =>
             {
-                await context.Response.WriteAsync("Index");
-            });
-        }
-        private static void About(IApplicationBuilder app)
-        {
-            app.Run(async context =>
-            {
-                await context.Response.WriteAsync("About");
+                await context.Response.WriteAsync("id is equal to 5");
             });
         }
     }
