@@ -18,36 +18,11 @@ namespace learnCore
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            // если приложение в процессе разработки
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
-                app.UseBrowserLink();
-            }
-            else
-            {
-                // установка обработчика ошибки
-                app.UseExceptionHandler("/Home/Error");
-            }
-            // установка обработчика статических файлов
-            app.UseStaticFiles();
-            // установка аунтификации юзера на основе куки
-            app.UseAuthentication();
-            // установка компонентов MVC для обработки запроса 
-            app.UseMvc(routes => 
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });            
-
-
-            // обработка запроса - получаем контекст запроса в виде объекта context
+            int x = 2;
             app.Run(async (context) =>
             {
-                // отправка ответа в виде строки "Hello World!"
-                await context.Response.WriteAsync("Hello World!");
+                x = x * 2;  //  2 * 2 = 4
+                await context.Response.WriteAsync($"Result: {x}");
             });
         }
     }
