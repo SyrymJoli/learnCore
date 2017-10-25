@@ -18,11 +18,18 @@ namespace learnCore
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            int x = 2;
+            int x = 5;
+            int y = 8;
+            int z = 0;
+            app.Use(async (context, next) =>
+            {
+                z = x * y;
+                await next.Invoke();
+            });
+        
             app.Run(async (context) =>
             {
-                x = x * 2;  //  2 * 2 = 4
-                await context.Response.WriteAsync($"Result: {x}");
+                await context.Response.WriteAsync($"x * y = {z}");
             });
         }
     }
