@@ -20,6 +20,7 @@ namespace learnCore
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()      // Установка класса Startup как стартового
+                .UseWebRoot("static")       // установка в папку static
                 .Build();
     }
 }
