@@ -4,16 +4,18 @@ using System.Threading.Tasks;
 public class TokenMiddleware
 {
     private readonly RequestDelegate _next;
+    string pattern;
  
-    public TokenMiddleware(RequestDelegate next)
+    public TokenMiddleware(RequestDelegate next, string pattern)
     {
         this._next = next;
+        this.pattern = pattern;
     }
  
     public async Task Invoke(HttpContext context)
     {
         var token = context.Request.Query["token"];
-        if (string.IsNullOrWhiteSpace(token) || token!="12345678")
+        if (string.IsNullOrWhiteSpace(token) || token!=pattern)
         {
             context.Response.StatusCode = 403;
             await context.Response.WriteAsync("Token is invalid");

@@ -18,8 +18,8 @@ namespace learnCore
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseToken();
- 
+            app.UseToken("555555");
+             
             app.Run(async (context) =>
             {
                 await context.Response.WriteAsync("Hello World");
