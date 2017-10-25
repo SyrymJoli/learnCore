@@ -17,9 +17,11 @@ namespace learnCore
 
         public void Configure(IApplicationBuilder app)
         {
-            app.UseMiddleware<ErrorHandlingMiddleware>();
-            app.UseMiddleware<AuthenticationMiddleware>();
-            app.UseMiddleware<RoutingMiddleware>();
+            app.UseStaticFiles();
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Hello World");
+            });
         }
     }
 }
