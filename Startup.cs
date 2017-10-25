@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System.IO;
 
 namespace learnCore
 {
@@ -17,16 +18,14 @@ namespace learnCore
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-           loggerFactory.AddConsole();
-
-           app.Run(async (context) => {
-               // создаем объект логгера
-               var logger = loggerFactory.CreateLogger("RequestInfoLogger");
-               // пишем на консоль информацию 
-               logger.LogInformation("Processing request: {0}", context.Request.Path);
-
-               await context.Response.WriteAsync("Hello World!");
-           });
+           loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory(),"logger.txt"));
+            var logger = loggerFactory.CreateLogger("FileLogger");
+            
+            app.Run(async (context) =>
+            {
+                logger.LogInformation("Processing request {0}", context.Request.Path);
+                await context.Response.WriteAsync("Hello World!");
+            });
         }
     }
 }

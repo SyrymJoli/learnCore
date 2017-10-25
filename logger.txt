@@ -1,0 +1,25 @@
+Hosting starting
+No listening endpoints were configured. Binding to http://localhost:5000 by default.
+Hosting started
+Loaded hosting startup assembly learnCore
+Connection id "0HL8RO56HJL4C" started.
+Request starting HTTP/1.1 GET http://localhost:5000/  
+Processing request /
+Connection id "0HL8RO56HJL4C" completed keep alive response.
+Request finished in 17.6413ms 200 
+Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+Processing request /favicon.ico
+Connection id "0HL8RO56HJL4C" completed keep alive response.
+Request finished in 0.6413ms 200 
+Request starting HTTP/1.1 GET http://localhost:5000/  
+Processing request /
+Connection id "0HL8RO56HJL4C" completed keep alive response.
+Request finished in 0.7391ms 200 
+Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+Processing request /favicon.ico
+Connection id "0HL8RO56HJL4C" completed keep alive response.
+Request finished in 0.2618ms 200 
+Hosting shutdown
+Connection id "0HL8RO56HJL4C" disconnecting.
+Connection id "0HL8RO56HJL4C" sending FIN.
+Connection id "0HL8RO56HJL4C" stopped.
