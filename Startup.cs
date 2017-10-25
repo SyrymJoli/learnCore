@@ -21,9 +21,27 @@ namespace learnCore
             // если приложение в процессе разработки
             if (env.IsDevelopment())
             {
-                // то выводим информацию об ошибке, при наличии ошибки
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+                app.UseBrowserLink();
             }
+            else
+            {
+                // установка обработчика ошибки
+                app.UseExceptionHandler("/Home/Error");
+            }
+            // установка обработчика статических файлов
+            app.UseStaticFiles();
+            // установка аунтификации юзера на основе куки
+            app.UseAuthentication();
+            // установка компонентов MVC для обработки запроса 
+            app.UseMvc(routes => 
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });            
+
 
             // обработка запроса - получаем контекст запроса в виде объекта context
             app.Run(async (context) =>
