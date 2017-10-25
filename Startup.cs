@@ -18,9 +18,12 @@ namespace learnCore
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            // Метод Map
-            app.Map("/index", Index);
-            app.Map("/about", About);
+            // Вложенные методы Map
+            app.Map("/home", home =>
+            {
+                home.Map("/index", Index);
+                home.Map("/about", About);
+            });
         
             app.Run(async (context) =>
             {
