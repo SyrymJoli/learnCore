@@ -13,17 +13,13 @@ namespace learnCore
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            app.UseToken("555555");
-             
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World");
-            });
+            app.UseMiddleware<ErrorHandlingMiddleware>();
+            app.UseMiddleware<AuthenticationMiddleware>();
+            app.UseMiddleware<RoutingMiddleware>();
         }
     }
 }
